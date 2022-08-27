@@ -1,5 +1,6 @@
 package com.ATL;
 
+import com.ATL.annotations.FrameworkAnnotations;
 import com.ATL.constants.FrameworkConstants;
 import com.ATL.constants.FrameworkConstantsSingleton;
 import com.ATL.extentReports.ExtentLogger;
@@ -20,6 +21,7 @@ import java.lang.reflect.Method;
 public class GetTests{
 
     @Test
+    @FrameworkAnnotations(Author = {"Shiv", "Shivom"}, Category = {"Sanity Test", "Basic Testing"})
     public void Tco01(Method method){
         Response response = RequestBuilder
                 .buildRequestForGETCalls()
@@ -43,6 +45,7 @@ public class GetTests{
     }
 
     @Test
+    @FrameworkAnnotations
     public void Tco02(Method method){
         Response response = RequestBuilder
                 .buildRequestForGETCalls()
@@ -57,7 +60,7 @@ public class GetTests{
         ExtentLogger.logResponse(response.prettyPrint());
 
         assertThat(response.getStatusCode())
-                .isEqualTo(201);
+                .isEqualTo(200);
 //        assertThat(response.jsonPath().getString("perpage"))
 //                .isEqualTo(6);
 //        assertThat(response.jsonPath().getList("response.data").size())

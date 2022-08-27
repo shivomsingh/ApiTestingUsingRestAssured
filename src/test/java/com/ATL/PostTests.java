@@ -1,5 +1,6 @@
 package com.ATL;
 
+import com.ATL.annotations.FrameworkAnnotations;
 import com.ATL.constants.FrameworkConstants;
 import com.ATL.constants.FrameworkConstantsSingleton;
 import com.ATL.extentReports.ExtentLogger;
@@ -19,6 +20,7 @@ import static io.restassured.RestAssured.given;
 
 public class PostTests {
     @Test
+    @FrameworkAnnotations
     public void TC01(){
         Users user =
                 Users
@@ -45,6 +47,7 @@ public class PostTests {
     }
 
     @Test
+    @FrameworkAnnotations
     public void postRequestUsingExternalFile(Method method){
         String requestAsString =
                 ApiUtils.readJsonAndGetAsString(FrameworkConstants.getRequestFolderPath()+ "Request.json")
@@ -66,6 +69,7 @@ public class PostTests {
     }
 
     @Test
+    @FrameworkAnnotations
     public void postRequestUsingExternalFileUsingSingletonClass(Method method){
         String requestAsString =
                 ApiUtils.readJsonAndGetAsString(FrameworkConstantsSingleton.getInstance().getRequestFolderPath() + "Request.json")
