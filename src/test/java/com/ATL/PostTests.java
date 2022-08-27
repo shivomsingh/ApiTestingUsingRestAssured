@@ -2,6 +2,8 @@ package com.ATL;
 
 import com.ATL.constants.FrameworkConstants;
 import com.ATL.constants.FrameworkConstantsSingleton;
+import com.ATL.extentReports.ExtentLogger;
+import com.ATL.extentReports.ExtentReport;
 import com.ATL.pojos.Users;
 import com.ATL.requestBuilder.RequestBuilder;
 import com.ATL.utils.ApiUtils;
@@ -34,7 +36,10 @@ public class PostTests {
         .when()
                 .post("/users");
 
-        response.prettyPrint();
+//        response.prettyPrint();
+//        ExtentReport.getTest().pass(response.prettyPrint());
+        ExtentLogger.logResponse(response.prettyPrint());
+
         Assertions.assertThat(response.getStatusCode())
                 .isEqualTo(201);
     }
@@ -42,7 +47,7 @@ public class PostTests {
     @Test
     public void postRequestUsingExternalFile(Method method){
         String requestAsString =
-                ApiUtils.readJsonAndGetAsString(FrameworkConstants.getRequestFolderPath()+ method.getName())
+                ApiUtils.readJsonAndGetAsString(FrameworkConstants.getRequestFolderPath()+ "Request.json")
                         .replace("firstName", RandomUtils.getName())
                         .replace("Jobs", RandomUtils.getJobName());
         Response response = RequestBuilder
@@ -50,7 +55,9 @@ public class PostTests {
                 .body(requestAsString)
                 .post("/users");
 
-        response.prettyPrint();
+//        response.prettyPrint();
+//        ExtentReport.getTest().pass(response.prettyPrint());
+        ExtentLogger.logResponse(response.prettyPrint());
 
         ApiUtils.storeStringAsJsonFile(FrameworkConstants.getResponseFolderPath()+ method.getName() +"Response.json", response);
 
@@ -69,7 +76,9 @@ public class PostTests {
                 .body(requestAsString)
                 .post("/users");
 
-        response.prettyPrint();
+//        response.prettyPrint();
+//        ExtentReport.getTest().pass(response.prettyPrint());
+        ExtentLogger.logResponse(response.prettyPrint());
 
         ApiUtils.storeStringAsJsonFile(FrameworkConstantsSingleton.getInstance().getResponseFolderPath() + method.getName() +"Response.json", response);
 

@@ -8,7 +8,7 @@ public final class FrameworkConstantsSingleton {
 
     private static FrameworkConstantsSingleton Instance = null;
 
-    public static FrameworkConstantsSingleton getInstance(){
+    public static synchronized FrameworkConstantsSingleton getInstance(){
         if(Instance == null)
             Instance = new FrameworkConstantsSingleton();
         return Instance;

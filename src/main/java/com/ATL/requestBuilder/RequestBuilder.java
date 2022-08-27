@@ -1,5 +1,7 @@
 package com.ATL.requestBuilder;
 
+import com.ATL.enums.PropertiesType;
+import com.ATL.utils.PropertyUtils;
 import io.restassured.specification.RequestSpecification;
 
 import static io.restassured.RestAssured.*;
@@ -10,7 +12,7 @@ public final class RequestBuilder {
 
     public static RequestSpecification buildRequestForGETCalls(){
         return  given()
-                .baseUri("https://reqres.in/api")
+                .baseUri(PropertyUtils.getValue(PropertiesType.BASEURL))
                 .log()
                 .all();
     }

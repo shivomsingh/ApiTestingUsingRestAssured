@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <listeners>
+        <listener class-name="com.ATL.listeners.TestListeners"></listener>
+    </listeners>
+    <test parallel="methods" thread-count="1" verbose="2" preserve-order="true" name="C:/Users/user/IdeaProjects/ApiAutomationFramework">
+        <classes>
+            <class name="com.ATL.GetTests">
+                <methods>
+                    <include name="Tco01" />
+                    <include name="Tco02" />
+                </methods>
+            </class>
+            <class name="com.ATL.PostTests">
+                <methods>
+                    <include name="TC01" />
+                    <include name="postRequestUsingExternalFile" />
+                    <include name="postRequestUsingExternalFileUsingSingletonClass" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
